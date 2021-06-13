@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 const icon_size = 35;
 const icon_color = "#cae3ea";
@@ -9,30 +9,38 @@ const Navbar = () => {
     return (
         <View style={navbar_styles.navbar}>
             <View style={navbar_styles.align_left}>
-                <FontAwesome5
-                    name={"hammer"}
-                    color={icon_color}
-                    size={icon_size}
-                />
+                <TouchableOpacity>
+                    <FontAwesome5
+                        name={"hammer"}
+                        color={icon_color}
+                        size={icon_size}
+                    />
+                </TouchableOpacity>
             </View>
             <View style={navbar_styles.align_right}>
-                <FontAwesome5
-                    name="cog"
-                    color={icon_color}
-                    size={icon_size}
-                />
-                <FontAwesome5
-                    style={navbar_styles.right_icon}
-                    name="heart"
-                    color={icon_color}
-                    size={icon_size}
-                />
-                <FontAwesome5
-                    style={navbar_styles.right_icon}
-                    name="music"
-                    color={icon_color}
-                    size={icon_size}
-                />
+                <TouchableOpacity>
+                    <FontAwesome5
+                        name="cog"
+                        color={icon_color}
+                        size={icon_size}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <FontAwesome5
+                        style={navbar_styles.right_icon}
+                        name="heart"
+                        color={icon_color}
+                        size={icon_size}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <FontAwesome5
+                        style={navbar_styles.right_icon}
+                        name="music"
+                        color={icon_color}
+                        size={icon_size}
+                    />
+                </TouchableOpacity>
             </View>
         </View>
     )
