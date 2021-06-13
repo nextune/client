@@ -24,6 +24,7 @@ Follow the following guidelines for making changes and pushing code.
         - `git fetch`
         - `git rebase origin/main`
     - Commit and push your changes
+        - `git add .`
         - `git commit -m "Message here"`
         - `git push`
     - Make a pull request on github. Make sure to tag the relevant issue(s). Once a pull request has been merged make sure to delete your branch on remote.
