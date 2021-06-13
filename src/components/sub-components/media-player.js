@@ -1,30 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import * as Haptics from 'expo-haptics';
 
 const icon_color = "#cae3ea";
 const icon_size = 60;
 const icon_size_small = 40;
 
 const MediaPlayer = () => {
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const onPlayPressHandler = () => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+        setIsPlaying(!isPlaying);
+    }
+
     return (
         <View style={media_styles.media}>
-            <FontAwesome5
-                name={"bars"}
-                color={icon_color}
-                size={icon_size_small}
-            />
-            <FontAwesome5
-                name={"play"}
-                color={icon_color}
-                size={icon_size}
-            />
-            <FontAwesome5
-                name={"share-alt"}
-                color={icon_color}
-                size={icon_size_small}
-            />
-        </View>
+            <TouchableOpacity>
+                <FontAwesome5
+                    name={"bars"}
+                    color={icon_color}
+                    size={icon_size_small}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={onPlayPressHandler}
+            >
+                <FontAwesome5
+                    name={isPlaying ? "pause" : "play"}
+                    color={icon_color}
+                    size={icon_size}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <FontAwesome5
+                    name={"share-alt"}
+                    color={icon_color}
+                    size={icon_size_small}
+                />
+            </TouchableOpacity>
+        </View >
     )
 }
 
