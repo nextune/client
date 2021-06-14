@@ -4,6 +4,10 @@ This is the user client for the Nextune application.
 
 ### Development requirements:
 - The latest version of expo installed
+    - Get the app on your phone
+    - On your desktop:
+        - `npm install -g yarn`
+        - `npm install -g expo-cli`
 - Node and NPM working
 - A good editor [VSCode recommended](https://code.visualstudio.com/download)
 
@@ -17,6 +21,7 @@ Run the following commands to obtain a local development version of the applicat
 ### Policy for making changes and pushing to main:
 Follow the following guidelines for making changes and pushing code.
 - To request a change, make an issue first. Then assign yourself to that issue. This makes it easier to keep track of what is being worked on and by whom.
+- **Do not** push large files (such as design sketches) to github. Edit this readme or create separate documentation to link to a google drive folder.
 - Only push code to your branch. Make sure that your branch is up to date with main before pushing.
     - Create your branch:
         - `git checkout -b "Branch name"`
