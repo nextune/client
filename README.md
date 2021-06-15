@@ -13,7 +13,7 @@ This is the user client for the Nextune application.
 ### Installing:
 Run the following commands to obtain a local development version of the application:
 - `git clone https://github.com/nextune/client`
-- `cd "Nextune client"`
+- `cd "client"`
 - `yarn install`
 - `expo start`
 
