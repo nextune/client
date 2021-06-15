@@ -3,19 +3,18 @@
 This is the user client for the Nextune application.
 
 ### Development requirements:
+- Yarn package manager - `npm install -g yarn`
 - The latest version of expo installed
     - Get the app on your phone
-    - On your desktop:
-        - `npm install -g yarn`
-        - `npm install -g expo-cli`
-- Node and NPM working
+    - On your desktop - `npm install -g expo-cli`
+- NodeJs ["Current" version is good](https://nodejs.org/en/)
 - A good editor [VSCode recommended](https://code.visualstudio.com/download)
 
 ### Installing:
 Run the following commands to obtain a local development version of the application:
 - `git clone https://github.com/nextune/client`
 - `cd "Nextune client"`
-- `npm install`
+- `yarn install`
 - `expo start`
 
 ### Policy for making changes and pushing to main:
