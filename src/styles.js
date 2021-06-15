@@ -11,15 +11,18 @@ export default StyleSheet.create({
         flex: 1,
     },
     text: {
-        fontSize: 18,
+        fontSize: 20,
         color: "#fff",
+        fontFamily: "Baloo2_500Medium",
     },
     title: {
-        fontSize: 30,
+        fontSize: 32,
+        fontFamily: "Baloo2_700Bold",
         color: "#fff",
     },
     sub_text: {
         color: "#fff",
-        fontSize: 15,
+        fontFamily: "Baloo2_400Regular",
+        fontSize: 17,
     }
 })

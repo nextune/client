@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
+import { useSelector, useDispatch } from 'react-redux';
+import { setPlaying } from '../../redux/actions/media';
 
 const icon_color = "#cae3ea";
 const icon_size = 60;
 const icon_size_small = 40;
 
 const MediaPlayer = () => {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const { isPlaying } = useSelector(state => state.mediaReducer);
+    const dispatch = useDispatch();
 
     const onPlayPressHandler = () => {
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-        setIsPlaying(!isPlaying);
+        dispatch(setPlaying(!isPlaying));
     }
 
     return (

@@ -3,19 +3,18 @@
 This is the user client for the Nextune application.
 
 ### Development requirements:
+- Yarn package manager - `npm install -g yarn`
 - The latest version of expo installed
     - Get the app on your phone
-    - On your desktop:
-        - `npm install -g yarn`
-        - `npm install -g expo-cli`
-- Node and NPM working
+    - On your desktop - `npm install -g expo-cli`
+- NodeJs ["Current" version is good](https://nodejs.org/en/)
 - A good editor [VSCode recommended](https://code.visualstudio.com/download)
 
 ### Installing:
 Run the following commands to obtain a local development version of the application:
 - `git clone https://github.com/nextune/client`
 - `cd "Nextune client"`
-- `npm install`
+- `yarn install`
 - `expo start`
 
 ### Policy for making changes and pushing to main:
@@ -32,7 +31,9 @@ Follow the following guidelines for making changes and pushing code.
         - `git add .`
         - `git commit -m "Message here"`
         - `git push`
-    - Make a pull request on github. Make sure to tag the relevant issue(s). Once a pull request has been merged make sure to delete your branch on remote.
+    - Make a pull request on github. Make sure to tag the relevant issue(s). Once a pull request has been merged make sure to **delete** your branch on remote.
     
+It is best practice to make sure that the app runs locally before pushing. If you encounter errors after you have updated your branch with main, most likely new packages have been added. Simply run `yarn install` again in the root directory to install these new packages.
+
 ### While making changes make sure to follow the following style guidelines:
 - TBD
