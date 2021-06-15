@@ -31,7 +31,9 @@ Follow the following guidelines for making changes and pushing code.
         - `git add .`
         - `git commit -m "Message here"`
         - `git push`
-    - Make a pull request on github. Make sure to tag the relevant issue(s). Once a pull request has been merged make sure to delete your branch on remote.
+    - Make a pull request on github. Make sure to tag the relevant issue(s). Once a pull request has been merged make sure to **delete** your branch on remote.
     
+It is best practice to make sure that the app runs locally before pushing. If you encounter errors after you have updated your branch with main, most likely new packages have been added. Simply run `yarn install` again in the root directory to install these new packages.
+
 ### While making changes make sure to follow the following style guidelines:
 - TBD
