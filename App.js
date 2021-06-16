@@ -9,6 +9,7 @@ import {
 	Baloo2_500Medium,
 	Baloo2_700Bold
 } from '@expo-google-fonts/baloo-2';
+import 'react-native-gesture-handler';
 
 export default function App() {
 	let [fontsLoaded] = useFonts({
