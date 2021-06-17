@@ -7,6 +7,7 @@ import Styles from '../styles';
 import { Directions, FlingGestureHandler, State } from 'react-native-gesture-handler';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleMoreInfo } from '../redux/actions/home';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 const Home = () => {
     const { moreInfo } = useSelector(state => state.homeReducer);
@@ -27,12 +28,22 @@ const Home = () => {
                 <StatusBar barStyle={setStatusBarStyle("light")} />
                 <Navbar />
 
+
                 <View style={Styles.container}>
                     <Text style={Styles.title}>Rahul's Flow and {moreInfo ? "Yes" : "No"}</Text>
                     <Card />
                 </View>
+
+                <View style={[Styles.centered, { marginTop: 20 }]}>
+                    <FontAwesome5
+                        name={"angle-up"}
+                        color="#cae3ea"
+                        size={40}
+                    />
+                    {/* <Text style={Styles.sub_text}>Swipe up</Text> */}
+                </View>
             </SafeAreaView>
-        </FlingGestureHandler>
+        </FlingGestureHandler >
     )
 }
 

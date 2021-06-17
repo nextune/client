@@ -49,7 +49,7 @@ const Navbar = () => {
 const navbar_styles = StyleSheet.create({
     navbar: {
         marginBottom: 10,
-        paddingHorizontal: 20,
+        paddingHorizontal: 15,
         paddingVertical: 10,
         flexDirection: "row",
     },

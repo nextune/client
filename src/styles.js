@@ -10,8 +10,14 @@ export default StyleSheet.create({
         alignItems: "center",
         flex: 1,
     },
+    centered: {
+        justifyContent: "center",
+        alignItems: "center",
+    },
     text: {
         fontSize: 20,
+        lineHeight: 24,
+        height: 20,
         color: "#fff",
         fontFamily: "Baloo2_500Medium",
     },
@@ -24,5 +30,11 @@ export default StyleSheet.create({
         color: "#fff",
         fontFamily: "Baloo2_400Regular",
         fontSize: 17,
+        height: 17,
+        lineHeight: 20
+    },
+    apply_border: { //for development purposes only
+        borderWidth: 2,
+        borderColor: "#cea",
     }
 })

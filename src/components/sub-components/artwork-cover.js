@@ -12,6 +12,8 @@ const ArtworkCover = () => {
 const artwork_styles = StyleSheet.create({
     artwork: {
         marginBottom: 30,
+        borderRadius: 15,
+        overflow: "hidden",
     }
 })
 
