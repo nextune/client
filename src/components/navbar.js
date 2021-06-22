@@ -1,5 +1,10 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View, Image } from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import Styles from '../styles';
+
+const icon_size = 35;
+const icon_color = "#fff";
 
 const Navbar = () => {
     return (

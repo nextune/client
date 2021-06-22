@@ -7,12 +7,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleMoreInfo } from '../redux/actions/home';
 import { FontAwesome5 } from '@expo/vector-icons';
 import styles from '../styles';
+import * as Haptics from 'expo-haptics';
 
 const Home = () => {
     const { moreInfo } = useSelector(state => state.homeReducer);
     const dispatch = useDispatch();
 
     const onSwipeUpHandler = () => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         dispatch(toggleMoreInfo(!moreInfo));
     }
 
@@ -31,14 +33,13 @@ const Home = () => {
                         <Text style={Styles.title}>Rahul's Flow and {moreInfo ? "Yes" : "No"}</Text>
                     </View>
                     <Card />
-                    <View style={[Styles.centered, { marginTop: 20 }]}>
+                    {/* <View style={[Styles.centered, { marginTop: 20 }]}>
                         <FontAwesome5
                             name={"angle-up"}
                             color="#cae3ea"
                             size={40}
                         />
-                        {/* <Text style={Styles.sub_text}>Swipe up</Text> */}
-                    </View>
+                    </View> */}
                 </View>
             </SafeAreaView>
         </FlingGestureHandler >

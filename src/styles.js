@@ -20,12 +20,12 @@ export default StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         color: "#fff",
-        fontFamily: "Baloo2_500Medium",
+        fontFamily: "Baloo2_700Bold",
     },
     title: {
         fontSize: 32,
-        fontFamily: "Baloo2_700Bold",
-        color: "#fff",
+        fontFamily: "Baloo2_500Medium",
+        color: "#fff"
     },
     sub_text: {
         color: "#fff",

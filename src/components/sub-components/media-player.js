@@ -5,7 +5,7 @@ import * as Haptics from 'expo-haptics';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPlaying } from '../../redux/actions/media';
 
-const icon_color = "#cae3ea";
+const icon_color = "#fff";
 const icon_size = 60;
 const icon_size_small = 40;
 
