@@ -1,38 +1,48 @@
 import { StyleSheet } from 'react-native';
+import { Colors } from './globals';
 
 export default StyleSheet.create({
     body: {
         backgroundColor: "#111111",
-        flex: 1,
-    },
-    container: {
+        padding: '5%',
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'stretch',
     },
-    centered: {
-        justifyContent: "center",
-        alignItems: "center",
+    title: {
+        fontSize: 24,
+        color: Colors.LIGHT,
+        fontFamily: "Baloo2_500Medium",
+        textTransform: 'uppercase',
     },
     text: {
-        lineHeight: 24,
-        height: 20,
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: "#fff",
+        fontSize: 10,
+        color: Colors.LIGHT,
+        fontFamily: "Baloo2_500Medium",
+        textTransform: 'uppercase',
+    },
+    card_title: {
+        fontSize: 32,
+        color: Colors.WHITE,
         fontFamily: "Baloo2_700Bold",
         textTransform: 'uppercase',
     },
-    title: {
-        fontSize: 24,
-        fontFamily: "Baloo2_500Medium",
-        color: "#fff",
-        textTransform: 'uppercase',
-    },
-    sub_text: {
-        color: "#fff",
-        fontSize: 12,
+    card_text: {
+        fontSize: 16,
+        color: Colors.WHITE,
         fontFamily: "Baloo2_400Regular",
         textTransform: 'uppercase',
-    }
+    },
+    minicard_title: {
+        fontSize: 24,
+        color: Colors.WHITE,
+        fontFamily: "Baloo2_700Bold",
+        textTransform: 'uppercase',
+    },
+    minicard_text: {
+        fontSize: 12,
+        color: Colors.WHITE,
+        fontFamily: "Baloo2_400Regular",
+        textTransform: 'uppercase',
+    },
 })
