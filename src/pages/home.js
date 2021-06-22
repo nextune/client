@@ -7,12 +7,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleMoreInfo } from '../redux/actions/home';
 import { FontAwesome5 } from '@expo/vector-icons';
 import styles from '../styles';
+import * as Haptics from 'expo-haptics';
 
 const Home = () => {
     const { moreInfo } = useSelector(state => state.homeReducer);
     const dispatch = useDispatch();
 
     const onSwipeUpHandler = () => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         dispatch(toggleMoreInfo(!moreInfo));
     }
 
@@ -27,17 +29,15 @@ const Home = () => {
                 <StatusBar barStyle="light-content" backgroundColor="#111111" />
                 <View style={styles.container}>
                     <Navbar />
-                    <View style={home_styles.flow_title}>
-                        <Text style={Styles.title}>Rahul's Flow and {moreInfo ? "Yes" : "No"}</Text>
-                    </View>
                     <Card />
-                    <View style={[Styles.centered, { marginTop: 20 }]}>
+                    <View style={home_styles.flow_title}>
                         <FontAwesome5
-                            name={"angle-up"}
-                            color="#cae3ea"
-                            size={40}
+                            style={{ alignSelf: 'center' }}
+                            name={"chevron-up"}
+                            color={"#cae3ea"}
+                            size={20}
                         />
-                        {/* <Text style={Styles.sub_text}>Swipe up</Text> */}
+                        <Text style={styles.sub_text}>See related</Text>
                     </View>
                 </View>
             </SafeAreaView>
@@ -49,6 +49,7 @@ const home_styles = StyleSheet.create({
     flow_title: {
         flex: 1,
         alignSelf: 'center',
+        paddingVertical: 5,
     },
 })
 

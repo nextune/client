@@ -20,23 +20,19 @@ export default StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         color: "#fff",
-        fontFamily: "Baloo2_500Medium",
+        fontFamily: "Baloo2_700Bold",
+        textTransform: 'uppercase',
     },
     title: {
-        fontSize: 32,
-        fontFamily: "Baloo2_700Bold",
+        fontSize: 24,
+        fontFamily: "Baloo2_500Medium",
         color: "#fff",
-    },
-    sub_text: {
-        color: "#fff",
-        fontFamily: "Baloo2_400Regular",
-        fontSize: 17,
-        height: 17,
-        lineHeight: 20
+        textTransform: 'uppercase',
     },
     sub_text: {
         color: "#fff",
         fontSize: 12,
         fontFamily: "Baloo2_400Regular",
+        textTransform: 'uppercase',
     }
 })
