@@ -29,17 +29,16 @@ const Home = () => {
                 <StatusBar barStyle="light-content" backgroundColor="#111111" />
                 <View style={styles.container}>
                     <Navbar />
-                    <View style={home_styles.flow_title}>
-                        <Text style={Styles.title}>Rahul's Flow and {moreInfo ? "Yes" : "No"}</Text>
-                    </View>
                     <Card />
-                    {/* <View style={[Styles.centered, { marginTop: 20 }]}>
+                    <View style={home_styles.flow_title}>
                         <FontAwesome5
-                            name={"angle-up"}
-                            color="#cae3ea"
-                            size={40}
+                            style={{ alignSelf: 'center' }}
+                            name={"chevron-up"}
+                            color={"#cae3ea"}
+                            size={20}
                         />
-                    </View> */}
+                        <Text style={styles.sub_text}>See related</Text>
+                    </View>
                 </View>
             </SafeAreaView>
         </FlingGestureHandler >
@@ -50,6 +49,7 @@ const home_styles = StyleSheet.create({
     flow_title: {
         flex: 1,
         alignSelf: 'center',
+        paddingVertical: 5,
     },
 })
 

@@ -1,16 +1,13 @@
 import React from 'react';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
-import Styles from '../styles';
-
-const icon_size = 35;
-const icon_color = "#fff";
+import { StyleSheet, TouchableOpacity, View, Image, Text } from 'react-native';
+import styles from '../styles';
 
 const Navbar = () => {
     return (
         <View style={navbar_styles.navbar}>
             <View style={navbar_styles.left_align}>
-                <Image source={require("../../assets/imgs/nextune_logo.png")} style={navbar_styles.nextune_logo} />
+                {/* <Image source={require("../../assets/imgs/nextune_logo.png")} style={navbar_styles.nextune_logo} /> */}
+                <Text style={styles.title}>Rahul's Flow</Text>
             </View>
             <View style={navbar_styles.right_align}>
                 <TouchableOpacity>
@@ -28,7 +25,7 @@ const navbar_styles = StyleSheet.create({
         padding: '5%',
     },
     left_align: {
-        flex: 1,
+        flex: 2,
         alignItems: 'flex-start',
     },
     right_align: {
