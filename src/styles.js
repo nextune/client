@@ -6,18 +6,19 @@ export default StyleSheet.create({
         flex: 1,
     },
     container: {
-        justifyContent: "center",
-        alignItems: "center",
         flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'stretch',
     },
     centered: {
         justifyContent: "center",
         alignItems: "center",
     },
     text: {
-        fontSize: 20,
         lineHeight: 24,
         height: 20,
+        fontSize: 18,
+        fontWeight: 'bold',
         color: "#fff",
         fontFamily: "Baloo2_500Medium",
     },
@@ -33,8 +34,9 @@ export default StyleSheet.create({
         height: 17,
         lineHeight: 20
     },
-    apply_border: { //for development purposes only
-        borderWidth: 2,
-        borderColor: "#cea",
+    sub_text: {
+        color: "#fff",
+        fontSize: 12,
+        fontFamily: "Baloo2_400Regular",
     }
 })
