@@ -1,40 +1,38 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, ImageBackground } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import styles from '../styles';
-import ArtworkCover from './sub-components/artwork-cover';
 import MediaPlayer from './sub-components/media-player';
 import Scrubber from './sub-components/scrubber';
 
 const Card = () => {
     return (
-        <View style={[card_styles.card, card_styles.shadowCard]}>
-            <ArtworkCover />
-            <Text style={styles.text}>Come and Go</Text>
-            <Text style={styles.sub_text}>Juice Wrld</Text>
-            <MediaPlayer />
-            <Scrubber />
-        </View>
+        <ImageBackground source={require("../../assets/imgs/temp_art.png")} style={card_styles.card}>
+            <LinearGradient colors={['#0000', '#111111bb']} locations={[0.4, 0.6]} style={card_styles.gradient}>
+                <Text style={styles.text}>COME AND GO</Text>
+                <Text style={styles.sub_text}>JUICE WRLD, MARSHMELLO</Text>
+                <MediaPlayer />
+                <Scrubber />
+            </LinearGradient>
+        </ImageBackground>
+
     )
 }
 
 const card_styles = StyleSheet.create({
     card: {
-        marginTop: 20,
-        backgroundColor: "#333",
+        margin: '5%',
         borderRadius: 15,
-        padding: 30,
+        overflow: 'hidden',
+        resizeMode: 'cover',
+        flex: 20,
+        elevation: 3,
     },
-    borderCard: {
-        borderWidth: 2,
-        borderColor: "#cae3ea",
+    gradient: {
+        flex: 1,
+        padding: '5%',
+        justifyContent: 'flex-end',
     },
-    shadowCard: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 1,
-        shadowRadius: 10,
-        elevation: 5
-    }
 })
 
 export default Card;

@@ -1,45 +1,15 @@
 import React from 'react';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-
-const icon_size = 35;
-const icon_color = "#cae3ea";
+import { StyleSheet, TouchableOpacity, View, Image } from 'react-native';
 
 const Navbar = () => {
     return (
         <View style={navbar_styles.navbar}>
-            <View style={navbar_styles.align_left}>
-                <TouchableOpacity>
-                    <FontAwesome5
-                        name={"hammer"}
-                        color={icon_color}
-                        size={icon_size}
-                    />
-                </TouchableOpacity>
+            <View style={navbar_styles.left_align}>
+                <Image source={require("../../assets/imgs/nextune_logo.png")} style={navbar_styles.nextune_logo} />
             </View>
-            <View style={navbar_styles.align_right}>
+            <View style={navbar_styles.right_align}>
                 <TouchableOpacity>
-                    <FontAwesome5
-                        name="cog"
-                        color={icon_color}
-                        size={icon_size}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <FontAwesome5
-                        style={navbar_styles.right_icon}
-                        name="heart"
-                        color={icon_color}
-                        size={icon_size}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <FontAwesome5
-                        style={navbar_styles.right_icon}
-                        name="music"
-                        color={icon_color}
-                        size={icon_size}
-                    />
+                    <Image source={require("../../assets/imgs/settings_icon.png")} style={navbar_styles.settings_icon} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -48,19 +18,30 @@ const Navbar = () => {
 
 const navbar_styles = StyleSheet.create({
     navbar: {
-        marginBottom: 10,
-        paddingHorizontal: 15,
-        paddingVertical: 10,
-        flexDirection: "row",
+        flex: 1,
+        flexDirection: 'row',
+        padding: '5%',
     },
-    align_right: {
-        flexGrow: 1,
-        marginRight: 10,
-        flexDirection: "row-reverse",
+    left_align: {
+        flex: 1,
+        alignItems: 'flex-start',
     },
-    right_icon: {
-        marginRight: 20,
-    }
+    right_align: {
+        flex: 1,
+        alignItems: 'flex-end',
+    },
+    nextune_logo: {
+        flex: 1,
+        height: '100%',
+        aspectRatio: 1,
+        resizeMode: 'contain',
+    },
+    settings_icon: {
+        flex: 1,
+        height: '100%',
+        aspectRatio: 1,
+        resizeMode: 'contain',
+    },
 })
 
 export default Navbar;
