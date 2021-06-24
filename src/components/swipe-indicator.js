@@ -19,7 +19,7 @@ const SwipeIndicator = () => {
 
 const indicator_styles = StyleSheet.create({
     indicator: {
-        height: '5%',
+        flex: 2,
         justifyContent: "center",
         alignItems: "center",
     },

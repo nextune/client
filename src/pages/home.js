@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
+import { SafeAreaView, StatusBar, View } from 'react-native';
 import Card from '../components/card';
 import Navbar from '../components/navbar';
 import SwipeIndicator from '../components/swipe-indicator';

@@ -57,16 +57,16 @@ const Related = () => {
     ]
 
     return (
-        < SafeAreaView style={Styles.body} >
+        <SafeAreaView style={Styles.body} >
             <StatusBar barStyle="light-content" backgroundColor={Colors.DARK} />
             <SectionList
                 sections={RELATED_TRACKS}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => 
-                        <MiniCard title={item.title} artist={item.artist} album_art={item.album_art} />
+                renderItem={({ item }) =>
+                    <MiniCard title={item.title} artist={item.artist} album_art={item.album_art} />
                 }
                 renderSectionHeader={({ section }) => (
-                        <Text style={Styles.card_title}>{section.title}</Text>
+                    <Text style={Styles.card_title}>{section.title}</Text>
                 )}
                 showsVerticalScrollIndicator={false}
                 overScrollMode={'never'}

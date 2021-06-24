@@ -11,15 +11,15 @@ const Navbar = () => {
                 {/* <Image source={require("../../assets/imgs/nextune_logo.png")} style={navbar_styles.navbar_icon} /> */}
             </View>
             <View style={navbar_styles.right_align}>
-                <TouchableOpacity>
-                    <Image source={require("../../assets/imgs/settings_icon.png")} style={navbar_styles.navbar_icon_right} />
-                </TouchableOpacity>
-                <TouchableOpacity style={[navbar_styles.navbar_icon_right, navbar_styles.fa_offset]}>
+                <TouchableOpacity style={navbar_styles.navbar_icon_right}>
                     <FontAwesome5
                         name={"pen"}
                         color={"#cae3ea"}
-                        size={25}
+                        size={30}
                     />
+                </TouchableOpacity>
+                <TouchableOpacity style={navbar_styles.navbar_icon_right}>
+                    <Image style={{ height: '50%', aspectRatio: 1, }} source={require("../../assets/imgs/settings_icon.png")} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -28,33 +28,23 @@ const Navbar = () => {
 
 const navbar_styles = StyleSheet.create({
     navbar: {
-        height: '4.5%',
+        flex: 2,
         flexDirection: 'row',
+        padding: 5,
     },
     left_align: {
-        width: '80%',
-        paddingTop: "1.5%",
+        flex: 2,
         alignItems: 'flex-start',
         justifyContent: 'center',
     },
     right_align: {
-        width: '20%',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-    },
-    settings_icon: {
+        flexDirection: 'row',
         flex: 1,
-        alignItems: 'flex-start',
-        flexDirection: 'row-reverse',
+        alignItems: 'center',
+        justifyContent: 'flex-end'
     },
     navbar_icon_right: {
-        height: '100%',
-        aspectRatio: 1,
-        resizeMode: 'contain',
-        marginLeft: 15
-    },
-    fa_offset: {
-        marginTop: 4,
+        marginLeft: 15,
     }
 })
 

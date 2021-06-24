@@ -4,10 +4,8 @@ import { Colors } from './globals';
 export default StyleSheet.create({
     body: {
         backgroundColor: "#111111",
-        padding: '5%',
+        paddingHorizontal: '5%',
         flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'stretch',
     },
     title: {
         fontSize: 24,
