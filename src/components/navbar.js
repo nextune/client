@@ -1,13 +1,12 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Image, Text } from 'react-native';
-import styles from '../styles';
+import Styles from '../styles';
 
 const Navbar = () => {
     return (
         <View style={navbar_styles.navbar}>
             <View style={navbar_styles.left_align}>
-                {/* <Image source={require("../../assets/imgs/nextune_logo.png")} style={navbar_styles.nextune_logo} /> */}
-                <Text style={styles.title}>Rahul's Flow</Text>
+                <Text style={Styles.title}>Rahul's Flow</Text>
             </View>
             <View style={navbar_styles.right_align}>
                 <TouchableOpacity>
@@ -20,26 +19,21 @@ const Navbar = () => {
 
 const navbar_styles = StyleSheet.create({
     navbar: {
-        flex: 1,
+        height: '4.5%',
         flexDirection: 'row',
-        padding: '5%',
     },
     left_align: {
-        flex: 2,
+        width: '80%',
+        paddingTop: "1.5%",
         alignItems: 'flex-start',
+        justifyContent: 'center',
     },
     right_align: {
-        flex: 1,
+        width: '20%',
         alignItems: 'flex-end',
-    },
-    nextune_logo: {
-        flex: 1,
-        height: '100%',
-        aspectRatio: 1,
-        resizeMode: 'contain',
+        justifyContent: 'center',
     },
     settings_icon: {
-        flex: 1,
         height: '100%',
         aspectRatio: 1,
         resizeMode: 'contain',

@@ -1,17 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, ImageBackground, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import styles from '../styles';
+import Styles from '../styles';
 import MediaPlayer from './sub-components/media-player';
 import Scrubber from './sub-components/scrubber';
+import { Colors } from '../globals';
 
 const Card = () => {
     return (
         <View style={card_styles.card_container}>
             <ImageBackground source={require("../../assets/imgs/temp_art.png")} style={card_styles.card}>
-                <LinearGradient colors={['#0000', '#111111bb']} locations={[0.4, 0.6]} style={card_styles.gradient}>
-                    <Text style={styles.text}>COME AND GO</Text>
-                    <Text style={styles.sub_text}>JUICE WRLD, MARSHMELLO</Text>
+                <LinearGradient colors={['transparent', Colors.TRANSLUCENT]} locations={[0.4, 0.6]} style={card_styles.gradient}>
+                    <Text style={Styles.card_title}>COME & GO</Text>
+                    <Text style={Styles.card_text}>JUICE WRLD, MARSHMELLO</Text>
                     <MediaPlayer />
                     <Scrubber />
                 </LinearGradient>
@@ -22,10 +23,10 @@ const Card = () => {
 
 const card_styles = StyleSheet.create({
     card_container: {
-        margin: '5%',
-        flex: 20,
+        flex: 1,
+        marginVertical: '5%',
         elevation: 3,
-        shadowColor: '#000',
+        shadowColor: Colors.BLACK,
         shadowOpacity: 1,
         shadowRadius: 15,
     },
