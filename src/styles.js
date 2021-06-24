@@ -45,4 +45,8 @@ export default StyleSheet.create({
         fontFamily: "Baloo2_400Regular",
         textTransform: 'uppercase',
     },
+    border: {
+        borderWidth: 2,
+        borderColor: '#cea',
+    }
 })
