@@ -11,6 +11,8 @@ import {
 	Baloo2_700Bold
 } from '@expo-google-fonts/baloo-2';
 import 'react-native-gesture-handler';
+import { View } from 'react-native';
+import styles from './src/styles';
 
 export default function App() {
 	let [fontsLoaded] = useFonts({
@@ -21,7 +23,9 @@ export default function App() {
 
 	return (
 		<Provider store={Store}>
-			{fontsLoaded ? <Related /> : <AppLoading />}
+			<View style={styles.body}>
+				{fontsLoaded ? <Related /> : <AppLoading />}
+			</View>
 		</Provider>
 	);
 }

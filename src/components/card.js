@@ -23,8 +23,7 @@ const Card = () => {
 
 const card_styles = StyleSheet.create({
     card_container: {
-        flex: 1,
-        marginVertical: '5%',
+        flex: 18,
         elevation: 3,
         shadowColor: Colors.BLACK,
         shadowOpacity: 1,
@@ -32,8 +31,8 @@ const card_styles = StyleSheet.create({
     },
     card: {
         borderRadius: 15,
+        flex: 1,
         overflow: 'hidden',
-        height: '100%',
         resizeMode: 'cover',
     },
     gradient: {
