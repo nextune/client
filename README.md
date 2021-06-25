@@ -25,8 +25,10 @@ Follow the following guidelines for making changes and pushing code.
     - Create your branch:
         - `git checkout -b "Branch name"`
     - Update your branch (if changes were made to main while working on your branch):
+        - `git stash`
         - `git fetch`
         - `git rebase origin/main`
+        - `git stash apply`
     - Commit and push your changes
         - `git add .`
         - `git commit -m "Message here"`

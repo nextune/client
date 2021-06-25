@@ -17,7 +17,6 @@ const Card = (props) => {
                         style={minicard_styles.play_icon}
                     >
                         <FontAwesome5
-                            style={{ alignSelf: 'center' }}
                             name={"play"}
                             color={Colors.WHITE}
                             size={35}
@@ -36,12 +35,12 @@ const minicard_styles = StyleSheet.create({
         elevation: 3,
         shadowColor: Colors.BLACK,
         shadowOpacity: 1,
-        shadowRadius: 15,
+        shadowRadius: 5,
     },
     card: {
         borderRadius: 15,
         overflow: 'hidden',
-        height: '100%',
+        flex: 1,
         resizeMode: 'cover',
     },
     dark_overlay: {
@@ -52,11 +51,11 @@ const minicard_styles = StyleSheet.create({
         alignItems: 'center',
     },
     track_info: {
-        width: '80%',
+        flex: 4,
     },
     play_icon: {
-        width: '20%',
-        marginHorizontal: '3%',
+        alignItems: 'flex-end',
+        flex: 1,
     },
 })
 

@@ -20,7 +20,7 @@ export default StyleSheet.create({
         textTransform: 'uppercase',
     },
     card_title: {
-        fontSize: 32,
+        fontSize: 30,
         color: Colors.WHITE,
         fontFamily: "Baloo2_700Bold",
         textTransform: 'uppercase',
@@ -32,7 +32,7 @@ export default StyleSheet.create({
         textTransform: 'uppercase',
     },
     minicard_title: {
-        fontSize: 24,
+        fontSize: 20,
         color: Colors.WHITE,
         fontFamily: "Baloo2_700Bold",
         textTransform: 'uppercase',

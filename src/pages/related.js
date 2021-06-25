@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, SectionList, StatusBar, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, SectionList, StatusBar, StyleSheet, Text, View } from 'react-native';
 import MiniCard from '../components/mini-card'
 import Styles from '../styles';
 import { Colors } from '../globals';
@@ -66,7 +66,10 @@ const Related = () => {
                     <MiniCard title={item.title} artist={item.artist} album_art={item.album_art} />
                 }
                 renderSectionHeader={({ section }) => (
-                    <Text style={Styles.card_title}>{section.title}</Text>
+                    <View style={related_styles.related_card_title}>
+                        <Text style={Styles.card_title}>{section.title}</Text>
+                    </View>
+
                 )}
                 showsVerticalScrollIndicator={false}
                 overScrollMode={'never'}
@@ -74,5 +77,12 @@ const Related = () => {
         </SafeAreaView >
     )
 }
+
+const related_styles = StyleSheet.create({
+    related_card_title: {
+        paddingVertical: '5%',
+        backgroundColor: Colors.DARK,
+    }
+})
 
 export default Related;
