@@ -10,13 +10,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleMoreInfo } from '../redux/actions/home';
 import * as Haptics from 'expo-haptics';
 
-const Home = () => {
+const Home = ({ navigation }) => {
     const { moreInfo } = useSelector(state => state.homeReducer);
     const dispatch = useDispatch();
 
     const onSwipeUpHandler = () => {
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         dispatch(toggleMoreInfo(!moreInfo));
+        navigation.navigate('related');
     }
 
     return (

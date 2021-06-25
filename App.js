@@ -13,9 +13,13 @@ import {
 import 'react-native-gesture-handler';
 import { View } from 'react-native';
 import styles from './src/styles';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 export default function App() {
-	let [fontsLoaded] = useFonts({
+	const Stack = createStackNavigator();
+
+	const [fontsLoaded] = useFonts({
 		Baloo2_400Regular,
 		Baloo2_500Medium,
 		Baloo2_700Bold
@@ -23,9 +27,24 @@ export default function App() {
 
 	return (
 		<Provider store={Store}>
-			<View style={styles.body}>
-				{fontsLoaded ? <Related /> : <AppLoading />}
-			</View>
+			<NavigationContainer>
+				<View style={styles.body}>
+					<Stack.Navigator
+						headerMode="none"
+						mode="modal"
+						initialRouteName="home"
+					>
+						<Stack.Screen
+							name="home"
+							component={Home}
+						/>
+						<Stack.Screen
+							name="related"
+							component={Related}
+						/>
+					</Stack.Navigator>
+				</View>
+			</NavigationContainer>
 		</Provider>
 	);
 }
