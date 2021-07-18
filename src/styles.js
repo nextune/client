@@ -1,10 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from './globals';
+import { Colors } from './colors';
 
 export default StyleSheet.create({
     body: {
-        backgroundColor: "#111111",
-        paddingHorizontal: '5%',
+        backgroundColor: Colors.DARK,
         flex: 1,
     },
     title: {
@@ -21,6 +20,7 @@ export default StyleSheet.create({
     },
     card_title: {
         fontSize: 30,
+        marginBottom: '-3%',
         color: Colors.WHITE,
         fontFamily: "Baloo2_700Bold",
         textTransform: 'uppercase',
@@ -43,8 +43,12 @@ export default StyleSheet.create({
         fontFamily: "Baloo2_400Regular",
         textTransform: 'uppercase',
     },
-    border: {
-        borderWidth: 2,
-        borderColor: '#cea',
-    }
+    tile: {
+        fontSize: 11,
+        lineHeight: 16,
+        textAlign: 'center',
+        color: Colors.WHITE,
+        fontFamily: "Baloo2_400Regular",
+        textTransform: 'uppercase',
+    },
 })
