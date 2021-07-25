@@ -1,39 +1,24 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, View } from 'react-native';
+import { SafeAreaView, StatusBar, ScrollView } from 'react-native';
 import Card from '../components/card';
+import MoreInfo from '../components/more-info';
 import Navbar from '../components/navbar';
 import SwipeIndicator from '../components/swipe-indicator';
 import Styles from '../styles';
-import { Colors } from '../globals';
-import { Directions, FlingGestureHandler, State } from 'react-native-gesture-handler';
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleMoreInfo } from '../redux/actions/home';
-import * as Haptics from 'expo-haptics';
+import { Colors } from '../colors';
 
-const Home = ({ navigation }) => {
-    const { moreInfo } = useSelector(state => state.homeReducer);
-    const dispatch = useDispatch();
-
-    const onSwipeUpHandler = () => {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-        dispatch(toggleMoreInfo(!moreInfo));
-        navigation.navigate('related');
-    }
+const Home = () => {
 
     return (
-        <FlingGestureHandler
-            direction={Directions.UP}
-            onHandlerStateChange={({ nativeEvent }) => {
-                if (nativeEvent.state === State.ACTIVE) { onSwipeUpHandler() }
-            }}
-        >
-            <SafeAreaView style={Styles.body}>
+        <SafeAreaView style={Styles.body}>
+            <ScrollView showsVerticalScrollIndicator={false} overScrollMode='never' snapToOffsets={[0]} decelerationRate='fast'>
                 <StatusBar barStyle="light-content" backgroundColor={Colors.DARK} />
                 <Navbar />
                 <Card />
                 <SwipeIndicator />
-            </SafeAreaView>
-        </FlingGestureHandler >
+                <MoreInfo />
+            </ScrollView>
+        </SafeAreaView>
     )
 }
 

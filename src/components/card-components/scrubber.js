@@ -31,6 +31,8 @@ const Scrubber = () => {
 const scrubber_styles = StyleSheet.create({
     scrubber: {
         alignItems: 'center',
+        justifyContent: 'center',
+        height: '5%',
         width: '100%',
     }
 })
