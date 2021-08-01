@@ -1,6 +1,7 @@
 import React from 'react';
 import AppLoading from 'expo-app-loading';
 import Home from './src/pages/home';
+import Album from './src/pages/album';
 import { Provider } from 'react-redux';
 import { Store } from './src/redux/store';
 import {
@@ -25,7 +26,7 @@ export default function App() {
 	else {
 		return (
 			<Provider store={Store}>
-				<Home />
+				<Album />
 			</Provider>
 		);
 	}

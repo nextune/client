@@ -2,13 +2,10 @@ import React from 'react';
 import { StyleSheet, View, useWindowDimensions, ImageBackground, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from '../colors';
-import Styles from '../styles';
 
 const MoreInfo = () => {
 
-    const window = useWindowDimensions();
-
-    const artists = [
+    const tiles = [
         { type: 'artist', name: 'Marshmello', image: require("../../assets/imgs/marshmello.jpg") },
         { type: 'artist', name: 'Juice WRLD', image: require("../../assets/imgs/juice_wrld.jpg") },
         { type: 'album', name: 'Legends Never Die', image: require("../../assets/imgs/legends_never_die.png") },
@@ -16,12 +13,12 @@ const MoreInfo = () => {
 
     const getIcon = (iconType) => iconType == 'album' ? require("../../assets/imgs/album_icon.png") : require("../../assets/imgs/artist_icon.png")
 
-    const Tile = ({ name, image, type }) => (
+    const Tile = (props) => (
         <TouchableOpacity>
-            <ImageBackground source={image} style={moreinfo_styles().tile}>
-                <Image source={getIcon(type)} style={moreinfo_styles().icon} />
+            <ImageBackground source={props.image} style={moreinfo_styles().tile}>
+                <Image source={getIcon(props.type)} style={moreinfo_styles().icon} />
                 <LinearGradient colors={['transparent', Colors.TRANSLUCENT]} style={moreinfo_styles().gradient}>
-                    <Text numberOfLines={2} style={Styles.tile}>{name}</Text>
+                    <Text numberOfLines={2} style={moreinfo_tyles().tile_text}>{props.name}</Text>
                 </LinearGradient>
             </ImageBackground>
         </TouchableOpacity>
@@ -33,29 +30,28 @@ const MoreInfo = () => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 overScrollMode='never'
-                snapToInterval={window.width*0.36}
-                decelerationRate='fast'
-                data={artists}
-                keyExtractor={(artist, index) => index.toString()}
-                renderItem={({ item, }) => (
+                data={tiles}
+                keyExtractor={(tiles, index) => index.toString()}
+                renderItem={({ item }) => (
                     <Tile type={item.type} name={item.name} image={item.image} />
                 )}
                 ListHeaderComponent={() => (
-                    <View style={moreinfo_styles().carousel_padding} />
+                    <View style={moreinfo_styles(tiles.length).carousel_padding} />
                 )}
                 ItemSeparatorComponent={() => (
                     <View style={moreinfo_styles().carousel_separator} />
                 )}
                 ListFooterComponent={() => (
-                    <View style={moreinfo_styles().carousel_padding} />
+                    <View style={moreinfo_styles(tiles.length).carousel_padding} />
                 )}
             />
         </View>
     )
 }
 
-const moreinfo_styles = () => {
+const moreinfo_styles = (tileCount) => {
     const window = useWindowDimensions();
+    const carouselPadding = () => tileCount == 2 ? window.width * 0.16 : window.width * 0.05;
     return (
         StyleSheet.create({
             container: {
@@ -68,6 +64,14 @@ const moreinfo_styles = () => {
                 height: '100%',
                 overflow: 'hidden',
                 resizeMode: 'cover',
+            },
+            tile_text: {
+                fontSize: 11,
+                lineHeight: 16,
+                textAlign: 'center',
+                color: Colors.WHITE,
+                fontFamily: "Baloo2_400Regular",
+                textTransform: 'uppercase',
             },
             icon: {
                 height: '40%',
@@ -84,7 +88,7 @@ const moreinfo_styles = () => {
                 width: window.width * 0.04,
             },
             carousel_padding: {
-                width: window.width * 0.16,
+                width: carouselPadding(),
             },
         })
     )
