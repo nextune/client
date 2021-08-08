@@ -18,7 +18,7 @@ const MoreInfo = () => {
             <ImageBackground source={props.image} style={moreinfo_styles().tile}>
                 <Image source={getIcon(props.type)} style={moreinfo_styles().icon} />
                 <LinearGradient colors={['transparent', Colors.TRANSLUCENT]} style={moreinfo_styles().gradient}>
-                    <Text numberOfLines={2} style={moreinfo_tyles().tile_text}>{props.name}</Text>
+                    <Text numberOfLines={2} style={moreinfo_styles().tile_text}>{props.name}</Text>
                 </LinearGradient>
             </ImageBackground>
         </TouchableOpacity>

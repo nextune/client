@@ -1,11 +1,13 @@
-import React from 'react';
-import { StatusBar, FlatList, StyleSheet, View, useWindowDimensions, ImageBackground, Text } from 'react-native';
+import React, { useRef } from 'react';
+import { StatusBar, Animated, StyleSheet, SafeAreaView, View, useWindowDimensions, ImageBackground, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Track from '../components/track';
 import Styles from '../styles';
 import { Colors } from '../colors';
 
 const Album = () => {
+
+    const window = useWindowDimensions();
 
     const album = {
         title: "Legends Never Die",
@@ -39,29 +41,46 @@ const Album = () => {
         { title: "Juice WRLD Speaks From Heaven - Outro", artist: "Juice WRLD" },
     ]
 
+    const scrollY = useRef(new Animated.Value(0)).current;
+
+    const handleScroll = Animated.event(
+        [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+        { useNativeDriver: true },
+    );
+
+    const headerTranslate = scrollY.interpolate({
+        inputRange: [0, window.width * 0.6],
+        outputRange: [0, -window.width * 0.6],
+        extrapolate: 'clamp',
+    });
+
     const AlbumHeader = (props) => (
-        <ImageBackground source={props.art} style={album_styles().header}>
-            <LinearGradient colors={[Colors.TRANSLUCENT, Colors.TRANSLUCENTISH, 'transparent']} style={album_styles().statusbar_gradient} />
-            <LinearGradient colors={['transparent', Colors.TRANSLUCENTISH, Colors.DARK]} style={album_styles().gradient}>
-                <Text numberOfLines={1} style={album_styles().header_title}>{props.title}</Text>
-                <Text numberOfLines={1} style={album_styles().header_text}>{props.artist} ({props.year})</Text>
-            </LinearGradient>
-        </ImageBackground>
+        <Animated.View style={album_styles(headerTranslate).header}>
+            <ImageBackground source={props.art} style={album_styles().image_background}>
+                <LinearGradient colors={[Colors.TRANSLUCENT, Colors.TRANSLUCENTISH, 'transparent']} style={album_styles().statusbar_gradient} />
+                <LinearGradient colors={['transparent', Colors.TRANSLUCENTISH, Colors.DARK]} style={album_styles().gradient}>
+                    <Text numberOfLines={1} style={album_styles().header_title}>{props.title}</Text>
+                    <Text numberOfLines={1} style={album_styles().header_text}>{props.artist} ({props.year})</Text>
+                </LinearGradient>
+            </ImageBackground>
+        </Animated.View>
     )
 
     return (
-        <View style={Styles.body}>
-            <StatusBar barStyle="auto" translucent={true} backgroundColor="transparent" />
-            <FlatList
+        <SafeAreaView style={Styles.body}>
+            <StatusBar barStyle="light" translucent={true} backgroundColor={Colors.TRANSLUCENT} />
+            <AlbumHeader title={album.title} artist={album.artist} art={album.art} year={album.year} />
+            <Animated.FlatList
+                style={album_styles().list}
+                contentContainerStyle={{paddingTop: window.width}}
+                onScroll={handleScroll}
                 showsVerticalScrollIndicator={false}
                 overScrollMode="never"
+                fadingEdgeLength={100}
                 data={tracks}
                 keyExtractor={(tracks, index) => index.toString()}
                 renderItem={({ item, index }) => (
                     <Track title={item.title} artist={item.artist} art={album.art} number={index + 1} />
-                )}
-                ListHeaderComponent={() => (
-                    <AlbumHeader title={album.title} artist={album.artist} art={album.art} year={album.year} />
                 )}
                 ItemSeparatorComponent={() => (
                     <View style={album_styles().separator} />
@@ -75,18 +94,24 @@ const Album = () => {
                     </View>
                 )}
             />
-        </View>
+        </SafeAreaView>
     )
 }
 
-const album_styles = () => {
+const album_styles = (headerTranslate) => {
     const window = useWindowDimensions();
     return (
         StyleSheet.create({
             header: {
+                position: 'absolute',
+                transform: [{ translateY: headerTranslate }],
                 aspectRatio: 1,
-                width: '100%',
-                marginBottom: window.height * 0.0125,
+                width: window.width,
+                resizeMode: 'cover',
+                zIndex: 1,
+            },
+            image_background: {
+                flex: 1,
                 resizeMode: 'cover',
             },
             header_title: {

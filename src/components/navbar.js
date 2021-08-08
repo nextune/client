@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
         <View style={navbar_styles().navbar}>
             <View style={navbar_styles().left_align}>
-                <Text style={Styles.title}>Alex's Flow</Text>
+                <Text numberOfLines={1} style={Styles.title}>Alex's Flow</Text>
             </View>
             <View style={navbar_styles().right_align}>
                 <TouchableOpacity>
@@ -30,7 +30,8 @@ const navbar_styles = () => {
                 marginTop: window.width * 0.04,
             },
             left_align: {
-                flex: 1,
+                width: window.width * 0.7,
+                marginBottom: '-1%',
                 alignItems: 'flex-start',
                 justifyContent: 'center',
             },

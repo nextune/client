@@ -5,16 +5,16 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 const Track = (props) => {
     return (
-        <View style={minicard_styles().track_container}>
-            <View style={minicard_styles().track_number}>
-                <Text style={minicard_styles().track_number_text}>{props.number}</Text>
+        <View style={track_styles().track_container}>
+            <View style={track_styles().track_number}>
+                <Text style={track_styles().track_number_text}>{props.number}</Text>
             </View>
-            <View style={minicard_styles().track_info}>
-                <Text numberOfLines={1} style={minicard_styles().title_text}>{props.title}</Text>
-                <Text numberOfLines={1} style={minicard_styles().artist_text}>{props.artist}</Text>
+            <View style={track_styles().track_info}>
+                <Text numberOfLines={1} style={track_styles().title_text}>{props.title}</Text>
+                <Text numberOfLines={1} style={track_styles().artist_text}>{props.artist}</Text>
             </View>
             <TouchableOpacity
-                style={minicard_styles().play_icon}
+                style={track_styles().play_icon}
             >
                 <FontAwesome5
                     style={{ alignSelf: 'center' }}
@@ -27,7 +27,7 @@ const Track = (props) => {
     )
 }
 
-const minicard_styles = () => {
+const track_styles = () => {
     const window = useWindowDimensions();
     return (
         StyleSheet.create({
