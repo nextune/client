@@ -1,8 +1,6 @@
-import styles from '../../styles';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import * as Haptics from 'expo-haptics';
+import { StyleSheet, View } from 'react-native';
 
 const Scrubber = () => {
 

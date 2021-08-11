@@ -5,7 +5,7 @@ import MoreInfo from '../components/more-info';
 import Navbar from '../components/navbar';
 import SwipeIndicator from '../components/swipe-indicator';
 import Styles from '../styles';
-import { Colors } from '../colors';
+import { Colors } from '../globals';
 
 const Home = () => {
 
