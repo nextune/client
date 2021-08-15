@@ -3,11 +3,14 @@ import { StyleSheet, Animated, View, ImageBackground, TouchableOpacity } from 'r
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Colors, Window } from '../globals';
+import { useNavigation } from '@react-navigation/native';
 
 const stickyHeaderHeight = Window.WIDTH * 0.64;
 
 export const StickyHeader = (props) => {
 
+
+    const navigation = useNavigation();
     const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
     const headerAnimation = (range) => (props.scroll.interpolate({
@@ -41,7 +44,8 @@ export const StickyHeader = (props) => {
                                     { translateY: headerAnimation(headerAnimationValues.iconTranslate) }
                                 ]
                             }]}>
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress = {()=> navigation.navigate('Home')}>
+
                                     <FontAwesome5 name={"chevron-left"} color={Colors.WHITE} size={20} />
                                 </TouchableOpacity>
                             </Animated.View>

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, ImageBackground, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors, Window } from '../globals';
+import { useNavigation } from '@react-navigation/native';
 
 const tiles = [
     { type: 'artist', name: 'Marshmello', image: require("../../assets/imgs/marshmello.jpg") },
@@ -9,12 +10,17 @@ const tiles = [
     { type: 'album', name: 'Legends Never Die', image: require("../../assets/imgs/legends_never_die.png") },
 ]
 
+
+
 const MoreInfo = () => {
 
     const getIcon = (iconType) => iconType == 'album' ? require("../../assets/imgs/album_icon.png") : require("../../assets/imgs/artist_icon.png")
+    const navigation = useNavigation();
 
     const Tile = (props) => (
-        <TouchableOpacity>
+
+        
+        <TouchableOpacity onPress = {() => (props.type == "album") ? navigation.navigate('Album'):navigation.navigate('Home')}>
             <ImageBackground source={props.image} style={moreinfo_styles.tile}>
                 <Image source={getIcon(props.type)} style={moreinfo_styles.icon} />
                 <LinearGradient colors={['transparent', Colors.TRANSLUCENT]} style={moreinfo_styles.gradient}>

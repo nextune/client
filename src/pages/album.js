@@ -44,7 +44,7 @@ const Album = () => {
     return (
         <SafeAreaView style={Styles.body}>
             <StatusBar barStyle="light" translucent={true} backgroundColor={'transparent'} />
-            <StickyHeader title={album.title} subtitle={album.artist + ' (' + album.year + ')'} art={album.art} scroll={scroll} />
+            <StickyHeader navigate title={album.title} subtitle={album.artist + ' (' + album.year + ')'} art={album.art} scroll={scroll} />
             <Tracklist scroll={scroll} ref={ref} data={tracks} />
         </SafeAreaView>
     )

@@ -16,7 +16,7 @@ const Home = () => {
                 <Navbar />
                 <Card />
                 <SwipeIndicator />
-                <MoreInfo />
+                <MoreInfo navigate/>
             </ScrollView>
         </SafeAreaView>
     )
