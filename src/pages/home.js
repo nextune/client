@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <SafeAreaView style={Styles.body}>
             <ScrollView showsVerticalScrollIndicator={false} overScrollMode='never' snapToOffsets={[0]} decelerationRate='fast'>
-                <StatusBar barStyle="light-content" backgroundColor={Colors.DARK} />
+                <StatusBar barStyle="light-content" translucent={true} backgroundColor={Colors.DARK} />
                 <Navbar />
                 <Card />
                 <SwipeIndicator />

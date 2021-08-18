@@ -9,7 +9,6 @@ const stickyHeaderHeight = Window.WIDTH * 0.64;
 
 export const StickyHeader = (props) => {
 
-
     const navigation = useNavigation();
     const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
