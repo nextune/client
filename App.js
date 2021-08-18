@@ -12,6 +12,23 @@ import {
 } from '@expo-google-fonts/baloo-2';
 import 'react-native-gesture-handler';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { StickyHeader } from './src/components/sticky-header';
+
+const Stack = createStackNavigator(
+
+);
+
+function MyStack() {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      	<Stack.Screen name="Home" component={Home}/>
+		<Stack.Screen name="Album" component={Album} />
+    </Stack.Navigator>
+  );
+}
+
 export default function App() {
 
 	const [fontsLoaded] = useFonts({
@@ -26,7 +43,10 @@ export default function App() {
 	else {
 		return (
 			<Provider store={Store}>
-				<Album />
+				{/* <Album /> */}
+				<NavigationContainer>
+    				<MyStack />
+    			</NavigationContainer>
 			</Provider>
 		);
 	}
