@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import Home from './src/pages/home';
 import Album from './src/pages/album';
@@ -13,20 +14,24 @@ import {
 import 'react-native-gesture-handler';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { StickyHeader } from './src/components/sticky-header';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import Styles from './src/styles';
+import { Colors } from './src/globals';
 
-const Stack = createStackNavigator(
+const Stack = createStackNavigator();
 
-);
+const StackNavigator = () => {
+	return (
+		<Stack.Navigator screenOptions={{
+			headerShown: false,
+			gestureEnabled: true,
+			...TransitionPresets.SlideFromRightIOS,
+		}}>
+			<Stack.Screen name="Home" component={Home} />
+			<Stack.Screen name="Album" component={Album} />
+		</Stack.Navigator>
 
-function MyStack() {
-  return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      	<Stack.Screen name="Home" component={Home}/>
-		<Stack.Screen name="Album" component={Album} />
-    </Stack.Navigator>
-  );
+	);
 }
 
 export default function App() {
@@ -42,11 +47,12 @@ export default function App() {
 	}
 	else {
 		return (
-			<Provider store={Store}>
-				{/* <Album /> */}
-				<NavigationContainer>
-    				<MyStack />
-    			</NavigationContainer>
+			<Provider store={Store} style={Styles.body}>
+				<View style={Styles.body}>
+					<NavigationContainer theme={{ colors: { background: Colors.DARK } }}>
+						<StackNavigator />
+					</NavigationContainer>
+				</View>
 			</Provider>
 		);
 	}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View, Image, Text } from 'react-native';
+import { StatusBar, StyleSheet, TouchableOpacity, View, Image, Text } from 'react-native';
 import { Colors, Window } from '../globals';
 
 const Navbar = () => {
@@ -23,7 +23,7 @@ const navbar_styles = StyleSheet.create({
         height: Window.HEIGHT * 0.05,
         paddingHorizontal: Window.WIDTH * 0.07,
         paddingVertical: Window.WIDTH * 0.01,
-        marginTop: Window.WIDTH * 0.04,
+        marginTop: Window.WIDTH * 0.04 + StatusBar.currentHeight,
     },
     left_align: {
         width: Window.WIDTH * 0.7,

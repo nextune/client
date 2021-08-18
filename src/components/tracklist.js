@@ -4,17 +4,16 @@ import Track from '../components/track';
 import { scrollHandler, snapHandler } from '../components/sticky-header';
 import { Colors, Window } from '../globals';
 
-const Tracklist = (props) => {
-
+const Tracklist = React.forwardRef((props, ref) => {
     return (
         <FlatList
             contentContainerStyle={{ paddingTop: Window.WIDTH }}
-            onMomentumScrollEnd={snapHandler.bind(this, props.ref)}
+            onMomentumScrollEnd={snapHandler.bind(this, ref)}
             onScroll={scrollHandler(props.scroll)}
             fadingEdgeLength={100}
             showsVerticalScrollIndicator={false}
             overScrollMode="never"
-            ref={props.ref}
+            ref={ref}
             data={props.data}
             keyExtractor={(tracks, index) => index.toString()}
             renderItem={({ item, index }) => (
@@ -33,7 +32,7 @@ const Tracklist = (props) => {
             )}
         />
     )
-}
+})
 
 const tracklist_styles = StyleSheet.create({
     separator: {
