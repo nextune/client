@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, ImageBackground, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import MediaPlayer from './card-components/media-player';
-import Scrubber from './card-components/scrubber';
-import { Colors, Window } from '../globals';
+import MediaPlayer from 'components/card-components/media-player';
+import Scrubber from 'components/card-components/scrubber';
+import { Colors, Window } from 'globals';
 
 const Card = () => {
     return (
         <View style={card_styles.card_container}>
-            <ImageBackground source={require("../../assets/imgs/legends_never_die.png")} style={card_styles.card}>
+            <ImageBackground source={require("../../assets/imgs/legends_never_die.jpg")} style={card_styles.card}>
                 <LinearGradient colors={['transparent', Colors.TRANSLUCENT]} locations={[0.4, 0.6]} style={card_styles.gradient}>
                     <Text numberOfLines={1} style={card_styles.card_title}>COME & GO</Text>
                     <Text numberOfLines={1} style={card_styles.card_text}>JUICE WRLD, MARSHMELLO</Text>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, ScrollView } from 'react-native';
-import Card from '../components/card';
-import MoreInfo from '../components/more-info';
-import Navbar from '../components/navbar';
-import SwipeIndicator from '../components/swipe-indicator';
-import Styles from '../styles';
-import { Colors } from '../globals';
+import Card from 'components/card';
+import Carousel from 'components/carousel';
+import Navbar from 'components/navbar';
+import SwipeIndicator from 'components/swipe-indicator';
+import Styles from 'styles';
+import { Colors } from 'globals';
+import { moreInfo } from 'data';
 
 const Home = () => {
 
@@ -16,7 +17,7 @@ const Home = () => {
                 <Navbar />
                 <Card />
                 <SwipeIndicator />
-                <MoreInfo navigate/>
+                <Carousel data={moreInfo} />
             </ScrollView>
         </SafeAreaView>
     )

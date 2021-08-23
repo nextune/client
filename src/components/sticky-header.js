@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Animated, View, ImageBackground, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { Colors, Window } from '../globals';
+import { Colors, Window } from 'globals';
 import { useNavigation } from '@react-navigation/native';
 
 const stickyHeaderHeight = Window.WIDTH * 0.64;
@@ -31,20 +31,20 @@ export const StickyHeader = (props) => {
 
     return (
         <View style={header_styles.header_container}>
-            <Animated.View style={[header_styles.header, { height: headerAnimation(headerAnimationValues.collapse) }]}>
+            <Animated.View style={[header_styles.header, {
+                height: headerAnimation(headerAnimationValues.collapse)
+            }]}>
                 <ImageBackground source={props.art} style={header_styles.image_background}>
                     <Animated.View style={[header_styles.readability_overlay, {
                         backgroundColor: headerAnimation(headerAnimationValues.colorFadeIn)
                     }]}>
                         <LinearGradient colors={[Colors.TRANSLUCENTISH, Colors.DARK]} style={header_styles.gradient}>
                             <Animated.View style={[header_styles.icon_container, {
-                                bottom: Window.HEIGHT * 0.326,
                                 transform: [
                                     { translateY: headerAnimation(headerAnimationValues.iconTranslate) }
                                 ]
                             }]}>
-                                <TouchableOpacity onPress = {()=> navigation.navigate('Home')}>
-
+                                <TouchableOpacity onPress={() => navigation.goBack()}>
                                     <FontAwesome5 name={"chevron-left"} color={Colors.WHITE} size={20} />
                                 </TouchableOpacity>
                             </Animated.View>
@@ -63,7 +63,6 @@ export const StickyHeader = (props) => {
                                 }]}>{props.subtitle}</Animated.Text>
                             </View>
                             <Animated.View style={[header_styles.icon_container, {
-                                bottom: Window.HEIGHT * 0.326,
                                 transform: [
                                     { translateY: headerAnimation(headerAnimationValues.iconTranslate) }
                                 ]
@@ -76,7 +75,9 @@ export const StickyHeader = (props) => {
                     </Animated.View>
                 </ImageBackground>
             </Animated.View>
-            <AnimatedLinearGradient colors={[Colors.DARK, Colors.TRANSLUCENT, 'transparent']} style={[header_styles.list_fade, { opacity: headerAnimation(headerAnimationValues.fadeIn) }]} />
+            <AnimatedLinearGradient colors={[Colors.DARK, Colors.TRANSLUCENT, 'transparent']} locations={[0, 0.36, 1]} style={[header_styles.list_fade, {
+                opacity: headerAnimation(headerAnimationValues.fadeIn)
+            }]} />
         </View>
     )
 }
@@ -94,6 +95,7 @@ const header_styles = StyleSheet.create({
         flex: 1,
     },
     icon_container: {
+        bottom: Window.HEIGHT * 0.326,
         width: '5%',
         alignItems: 'center',
     },
@@ -101,7 +103,7 @@ const header_styles = StyleSheet.create({
         flex: 1,
     },
     list_fade: {
-        height: Window.WIDTH * 0.075,
+        height: Window.WIDTH * 0.08,
     },
     image_background: {
         flex: 1,
@@ -138,11 +140,3 @@ export const scrollHandler = (scroll) => (
         { useNativeDriver: false }
     )
 )
-
-export const snapHandler = (ref, { nativeEvent }) => {
-    const offset = nativeEvent.contentOffset.y;
-    const getCloser = (value, checkOne, checkTwo) => Math.abs(value - checkOne) < Math.abs(value - checkTwo) ? checkOne : checkTwo;
-    return ((offset > 0 && offset < stickyHeaderHeight) ? ref.current ? ref.current.scrollToOffset({
-        offset: getCloser(offset, 0, stickyHeaderHeight) == 0 ? -stickyHeaderHeight : stickyHeaderHeight
-    }) : null : null);
-}

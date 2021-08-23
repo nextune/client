@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar, StyleSheet, TouchableOpacity, View, Image, Text } from 'react-native';
-import { Colors, Window } from '../globals';
+import { Colors, Window } from 'globals';
 
 const Navbar = () => {
     return (

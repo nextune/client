@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { Colors, Window } from '../globals';
+import { Colors, Window } from 'globals';
 
 const SwipeIndicator = () => {
     return (
@@ -20,8 +20,8 @@ const indicator_styles = StyleSheet.create({
     indicator: {
         justifyContent: "center",
         alignItems: "center",
-        height: Window.HEIGHT * 0.05,
-        marginTop: Window.HEIGHT * 0.005,
+        height: Window.HEIGHT * 0.04,
+        marginTop: Window.HEIGHT * 0.01,
         marginBottom: Window.HEIGHT * 0.03,
     },
     text: {
