@@ -1,13 +1,13 @@
 import { Dimensions } from "react-native";
 
 export const Colors = {
-    BLACK: '#000',
-    DARK: '#111',
-    DARKISH: '#222',
-    TRANSLUCENT: '#111111bb',
-    TRANSLUCENTISH: '#11111144',
+    BLACK: '#000000',
+    DARK: '#111111',
+    DARKISH: '#1A1A1A',
+    TRANSLUCENT: '#111111cc',
+    TRANSLUCENTISH: '#11111155',
     LIGHT: '#bbc6cc',
-    WHITE: '#fff',
+    WHITE: '#ffffff',
 };
 
 export const Window = {

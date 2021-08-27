@@ -3,7 +3,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { StyleSheet, TouchableOpacity, View, Image } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPlaying } from '../../redux/actions/media';
+import { setPlaying } from 'redux/actions/media';
 
 const icon_color = "#fff";
 const icon_size = 60;

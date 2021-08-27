@@ -1,22 +1,22 @@
 import React from 'react';
 import { View } from 'react-native';
-import AppLoading from 'expo-app-loading';
-import Home from './src/pages/home';
-import Album from './src/pages/album';
+import Home from 'pages/home';
+import Album from 'pages/album';
+import Artist from 'pages/artist';
+import Loading from 'pages/loading';
 import { Provider } from 'react-redux';
-import { Store } from './src/redux/store';
+import { Store } from 'redux/store';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import Styles from 'styles';
+import { Colors } from 'globals';
 import {
 	useFonts,
 	Baloo2_400Regular,
 	Baloo2_500Medium,
 	Baloo2_700Bold,
 } from '@expo-google-fonts/baloo-2';
-import 'react-native-gesture-handler';
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import Styles from './src/styles';
-import { Colors } from './src/globals';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +29,7 @@ const StackNavigator = () => {
 		}}>
 			<Stack.Screen name="Home" component={Home} />
 			<Stack.Screen name="Album" component={Album} />
+			<Stack.Screen name="Artist" component={Artist} />
 		</Stack.Navigator>
 
 	);
@@ -43,11 +44,11 @@ export default function App() {
 	});
 
 	if (!fontsLoaded) {
-		return <AppLoading />;
+		return <Loading />;
 	}
 	else {
 		return (
-			<Provider store={Store} style={Styles.body}>
+			<Provider store={Store}>
 				<View style={Styles.body}>
 					<NavigationContainer theme={{ colors: { background: Colors.DARK } }}>
 						<StackNavigator />
