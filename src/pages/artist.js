@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { Animated, StatusBar, SafeAreaView, SectionList, Text, View, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StatusBar, SafeAreaView, Text, StyleSheet } from 'react-native';
+import Animated, { useSharedValue } from 'react-native-reanimated';
 import Tracklist from 'components/tracklist';
 import { StickyHeader, scrollHandler } from 'components/sticky-header';
 import Carousel from 'components/carousel';
@@ -9,58 +10,28 @@ import { artist, popular, singles, albums } from 'data';
 
 const Artist = () => {
 
-    const scroll = useRef(new Animated.Value(0)).current;
-
-    const sections = [
-        {
-            data: popular,
-            render: (section) => (
-                <View>
-                    <Text style={artist_styles.section_text}>Popular</Text>
-                    <Tracklist noFooter data={section.data} />
-                </View>
-            )
-        },
-        {
-            data: singles,
-            render: (section) => (
-                <View>
-                    <Text style={artist_styles.section_text}>Singles</Text>
-                    <Tracklist noNumbers footerText='View More' data={section.data} />
-                </View>
-            )
-        },
-        {
-            data: albums,
-            render: (section) => (
-                <View>
-                    <Text style={artist_styles.section_text}>Albums & EPs</Text>
-                    <Carousel forceLeftAlign noIcon data={section.data} />
-                </View>
-            )
-        },
-    ]
+    const scroll = useSharedValue(0);
 
     return (
         <SafeAreaView style={Styles.body}>
             <StatusBar barStyle="light" translucent={true} backgroundColor={'transparent'} />
             <StickyHeader title={artist.name} subtitle={artist.listeners + ' Monthly Listeners'} art={artist.art} scroll={scroll} />
-            <SectionList
+            <Animated.ScrollView
                 contentContainerStyle={{ paddingTop: Window.WIDTH }}
                 snapToOffsets={[0, Window.WIDTH * 0.64]}
                 snapToEnd={false}
-                decelerationRate={scroll < Window.WIDTH * 0.64 ? 'fast' : 'normal'}
                 onScroll={scrollHandler(scroll)}
                 fadingEdgeLength={100}
                 showsVerticalScrollIndicator={false}
                 overScrollMode="never"
-                sections={sections}
-                keyExtractor={(sections, index) => index.toString()}
-                renderItem={() => (<></>)}
-                renderSectionHeader={({ section }) => (
-                    section.render(section)
-                )}
-            />
+            >
+                <Text style={artist_styles.section_text}>Popular</Text>
+                <Tracklist noFooter data={popular} />
+                <Text style={artist_styles.section_text}>Singles</Text>
+                <Tracklist noNumbers footerText='View More' data={singles} />
+                <Text style={artist_styles.section_text}>Albums & EPs</Text>
+                <Carousel forceLeftAlign noIcon data={albums} />
+            </Animated.ScrollView>
         </SafeAreaView>
     )
 }
