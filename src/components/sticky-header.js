@@ -5,9 +5,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Colors, Window } from 'globals';
 import { useNavigation } from '@react-navigation/native';
 import Animated from 'react-native-reanimated';
-import { animations, animatedStyle } from 'animations';
-
-export const stickyHeaderHeight = Window.WIDTH * 0.64;
+import { animations, animatedStyle, stickyHeaderHeight } from 'animations';
 
 const StickyHeader = (props) => {
 
@@ -55,9 +53,6 @@ const header_styles = StyleSheet.create({
         width: Window.WIDTH,
         height: Window.WIDTH,
         resizeMode: 'cover',
-    },
-    readability_overlay: {
-        flex: 1,
     },
     gradient: {
         flex: 1,

@@ -22,6 +22,7 @@ const Home = () => {
                 snapToOffsets={[0]}
                 decelerationRate='fast'
                 onScroll={scrollHandler(scroll)}
+                scrollEventThrottle={16}
             >
                 <StatusBar barStyle="light-content" translucent={true} backgroundColor={Colors.DARK} />
                 <Navbar />

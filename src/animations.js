@@ -1,5 +1,4 @@
 import { useAnimatedScrollHandler, Extrapolate, interpolate, useAnimatedStyle, interpolateColor } from "react-native-reanimated";
-import { stickyHeaderHeight } from "components/sticky-header";
 import { Window } from 'globals';
 
 export const scrollHandler = (scroll) => useAnimatedScrollHandler({
@@ -40,6 +39,8 @@ export const animatedStyle = (sharedValue, animations) => useAnimatedStyle(() =>
     return style;
 
 })
+
+export const stickyHeaderHeight = Window.WIDTH * 0.64;
 
 const defaultInputRange = {
     swipeIndicator: [0, Window.WIDTH * 0.36],
