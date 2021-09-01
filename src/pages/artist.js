@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar, SafeAreaView, Text, StyleSheet } from 'react-native';
 import Animated, { useSharedValue } from 'react-native-reanimated';
 import Tracklist from 'components/tracklist';
-import { StickyHeader, scrollHandler } from 'components/sticky-header';
+import StickyHeader from 'components/sticky-header';
 import Carousel from 'components/carousel';
 import { Colors, Window } from 'globals';
 import Styles from 'styles';
 import { artist, popular, singles, albums } from 'data';
+import { scrollHandler } from 'animations';
 
 const Artist = () => {
 

@@ -4,115 +4,38 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Colors, Window } from 'globals';
 import { useNavigation } from '@react-navigation/native';
-import Animated, { interpolate, Extrapolate, useAnimatedScrollHandler, useAnimatedStyle, interpolateColor } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
+import { animations, animatedStyle } from 'animations';
 
-const stickyHeaderHeight = Window.WIDTH * 0.64;
-const defaultInputRange = [0, stickyHeaderHeight];
+export const stickyHeaderHeight = Window.WIDTH * 0.64;
 
-const animation = {
-    collapse: {
-        type: 'translateY',
-        isTransform: true,
-        inputRange: defaultInputRange,
-        outputRange: [0, -stickyHeaderHeight],
-    },
-    parallax: {
-        type: 'translateY',
-        isTransform: true,
-        inputRange: defaultInputRange,
-        outputRange: [0, stickyHeaderHeight / 2],
-    },
-    iconTranslate: {
-        type: 'translateY',
-        isTransform: true,
-        inputRange: defaultInputRange,
-        outputRange: [0, stickyHeaderHeight],
-    },
-    titleTranslate: {
-        type: 'translateY',
-        isTransform: true,
-        inputRange: defaultInputRange,
-        outputRange: [0, Window.WIDTH * 0.03],
-    },
-    subtitleTranslate: {
-        type: 'translateY',
-        isTransform: true,
-        inputRange: defaultInputRange,
-        outputRange: [0, Window.WIDTH * -0.04],
-    },
-    titleScale: {
-        type: 'scale',
-        isTransform: true,
-        inputRange: defaultInputRange,
-        outputRange: [1, 0.75],
-    },
-    fadeIn: {
-        type: 'opacity',
-        isTransform: false,
-        inputRange: [0, stickyHeaderHeight * 0.99, stickyHeaderHeight],
-        outputRange: [0, 0, 1],
-    },
-    fadeOut: {
-        type: 'opacity',
-        isTransform: false,
-        inputRange: defaultInputRange,
-        outputRange: [1, 0],
-    },
-}
-
-export const StickyHeader = (props) => {
+const StickyHeader = (props) => {
 
     const navigation = useNavigation();
     const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
-    const animatedStyle = (animations) => useAnimatedStyle(() => {
-
-        const style = {};
-        const transforms = [];
-
-        animations.forEach(animation => {
-
-            const interpolatedValue = interpolate(
-                props.scroll.value,
-                animation.inputRange,
-                animation.outputRange,
-                Extrapolate.CLAMP,
-            )
-
-            animation.isTransform ?
-                transforms.push(Object.defineProperty(Object.create(null), animation.type, { value: interpolatedValue, enumerable: true })) :
-                Object.defineProperty(style, animation.type, { value: interpolatedValue, enumerable: true })
-
-        });
-
-        transforms.length > 0 ? Object.defineProperty(style, 'transform', { value: transforms, enumerable: true }) : null
-
-        return style;
-
-    })
-
     return (
         <View style={header_styles.header_container}>
-            <Animated.View style={[header_styles.header, animatedStyle([animation.collapse])]}>
-                <Animated.Image source={props.art} style={[header_styles.image_background, animatedStyle([animation.parallax])]} />
+            <Animated.View style={[header_styles.header, animatedStyle(props.scroll, [animations.stickyHeader.collapse])]}>
+                <Animated.Image source={props.art} style={[header_styles.image_background, animatedStyle(props.scroll, [animations.stickyHeader.parallax])]} />
                 <LinearGradient colors={[Colors.TRANSLUCENTISH, Colors.DARK]} style={header_styles.gradient}>
-                    <Animated.View style={[header_styles.icon_container, animatedStyle([animation.iconTranslate])]}>
+                    <Animated.View style={[header_styles.icon_container, animatedStyle(props.scroll, [animations.stickyHeader.iconTranslate])]}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
                             <FontAwesome5 name={"chevron-left"} color={Colors.WHITE} size={20} />
                         </TouchableOpacity>
                     </Animated.View>
                     <View style={header_styles.text_container}>
-                        <Animated.Text numberOfLines={1} style={[header_styles.header_title, animatedStyle([animation.titleScale, animation.titleTranslate])]}>{props.title}</Animated.Text>
-                        <Animated.Text numberOfLines={1} style={[header_styles.header_subtitle, animatedStyle([animation.subtitleTranslate, animation.fadeOut])]}>{props.subtitle}</Animated.Text>
+                        <Animated.Text numberOfLines={1} style={[header_styles.header_title, animatedStyle(props.scroll, [animations.stickyHeader.titleScale, animations.stickyHeader.titleTranslate])]}>{props.title}</Animated.Text>
+                        <Animated.Text numberOfLines={1} style={[header_styles.header_subtitle, animatedStyle(props.scroll, [animations.stickyHeader.subtitleTranslate, animations.stickyHeader.fadeOut])]}>{props.subtitle}</Animated.Text>
                     </View>
-                    <Animated.View style={[header_styles.icon_container, animatedStyle([animation.iconTranslate])]}>
+                    <Animated.View style={[header_styles.icon_container, animatedStyle(props.scroll, [animations.stickyHeader.iconTranslate])]}>
                         <TouchableOpacity>
                             <FontAwesome5 name={"ellipsis-v"} color={Colors.WHITE} size={20} />
                         </TouchableOpacity>
                     </Animated.View>
                 </LinearGradient>
             </Animated.View>
-            <AnimatedLinearGradient colors={[Colors.DARK, Colors.TRANSLUCENT, 'transparent']} locations={[0, 0.36, 1]} style={[header_styles.list_fade, animatedStyle([animation.fadeIn])]} />
+            <AnimatedLinearGradient colors={[Colors.DARK, Colors.TRANSLUCENT, 'transparent']} locations={[0, 0.36, 1]} style={[header_styles.list_fade, animatedStyle(props.scroll, [animations.stickyHeader.fadeIn])]} />
         </View>
     )
 }
@@ -173,8 +96,4 @@ const header_styles = StyleSheet.create({
     },
 })
 
-export const scrollHandler = (scroll) => useAnimatedScrollHandler({
-    onScroll: (event) => {
-        scroll.value = event.contentOffset.y;
-    },
-});
+export default StickyHeader;
