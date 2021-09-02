@@ -6,6 +6,7 @@ import { Colors, Window } from 'globals';
 const Tracklist = (props) => {
     return (
         <FlatList
+            scrollEnabled={false}
             data={props.data}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
@@ -14,7 +15,7 @@ const Tracklist = (props) => {
             ItemSeparatorComponent={() => (
                 <View style={tracklist_styles.separator} />
             )}
-            ListFooterComponent={() => ( props.noFooter ? <View style={tracklist_styles.no_footer} /> :
+            ListFooterComponent={() => (props.noFooter ? <View style={tracklist_styles.no_footer} /> :
                 <View>
                     <View style={tracklist_styles.footer}>
                         <Text style={tracklist_styles.footer_text}>{props.footerText}</Text>

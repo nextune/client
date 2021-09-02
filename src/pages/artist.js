@@ -1,15 +1,18 @@
-import React, { useRef, useState } from 'react';
-import { Animated, StatusBar, SafeAreaView, SectionList, Text, View, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StatusBar, SafeAreaView, Text, StyleSheet, View, SectionList } from 'react-native';
+import Animated, { useSharedValue } from 'react-native-reanimated';
 import Tracklist from 'components/tracklist';
-import { StickyHeader, scrollHandler } from 'components/sticky-header';
+import StickyHeader from 'components/sticky-header';
 import Carousel from 'components/carousel';
 import { Colors, Window } from 'globals';
 import Styles from 'styles';
 import { artist, popular, singles, albums } from 'data';
+import { scrollHandler } from 'animations';
 
 const Artist = () => {
 
-    const scroll = useRef(new Animated.Value(0)).current;
+    const scroll = useSharedValue(0);
+    const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
     const sections = [
         {
@@ -45,12 +48,12 @@ const Artist = () => {
         <SafeAreaView style={Styles.body}>
             <StatusBar barStyle="light" translucent={true} backgroundColor={'transparent'} />
             <StickyHeader title={artist.name} subtitle={artist.listeners + ' Monthly Listeners'} art={artist.art} scroll={scroll} />
-            <SectionList
+            <AnimatedSectionList
                 contentContainerStyle={{ paddingTop: Window.WIDTH }}
                 snapToOffsets={[0, Window.WIDTH * 0.64]}
                 snapToEnd={false}
-                decelerationRate={scroll < Window.WIDTH * 0.64 ? 'fast' : 'normal'}
                 onScroll={scrollHandler(scroll)}
+                scrollEventThrottle={16}
                 fadingEdgeLength={100}
                 showsVerticalScrollIndicator={false}
                 overScrollMode="never"
